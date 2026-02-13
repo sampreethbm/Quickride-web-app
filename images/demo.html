@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Image Optimization Demo</title>
+    <style>
+      body{font-family:Inter,Arial,sans-serif;padding:2rem;background:#f8fafc;color:#0f172a}
+      .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+      .panel{background:#fff;padding:1rem;border-radius:12px;border:1px solid #e6eef8}
+      img{max-width:100%;display:block;border-radius:8px}
+      h3{margin:0 0 .5rem 0}
+      .note{font-size:.9rem;color:#64748b}
+    </style>
+  </head>
+  <body>
+    <h1>Image Optimization Demo</h1>
+    <p class="note">Left: original (images/). Right: optimized output (dist/images/) after running <code>npm run optimize-images</code>.</p>
+    <div class="grid">
+      <div class="panel">
+        <h3>Original — sample-ride-1.svg</h3>
+        <img src="sample-ride-1.svg" alt="Sample ride 1 original">
+      </div>
+      <div class="panel">
+        <h3>Optimized — sample-ride-1.svg</h3>
+        <img src="../dist/images/sample-ride-1.svg" alt="Sample ride 1 optimized">
+      </div>
+      <div class="panel">
+        <h3>Original — sample-ride-2.svg</h3>
+        <img src="sample-ride-2.svg" alt="Sample ride 2 original">
+      </div>
+      <div class="panel">
+        <h3>Optimized — sample-ride-2.svg</h3>
+        <img src="../dist/images/sample-ride-2.svg" alt="Sample ride 2 optimized">
+      </div>
+    </div>
+  </body>
+</html>

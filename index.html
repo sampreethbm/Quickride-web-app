@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QuickRide — simple, professional ride booking and management.">
+    <meta name="theme-color" content="#2563eb">
+    <title>QuickRide | Professional Booking</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="stylesheet" href="css/variable.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="navbar">
+        <div class="container header-content" role="navigation" aria-label="Main navigation">
+            <h1 class="logo">Quick<span>Ride</span></h1>
+            <div id="ride-count" class="badge" aria-live="polite">0 Bookings</div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+        <section class="card shadow-sm">
+            <h2 class="section-title">Book a New Ride</h2>
+            <form id="ride-form" aria-label="Book a ride">
+                <div class="form-group">
+                    <label for="passenger-name">Passenger Name</label>
+                    <input type="text" id="passenger-name" placeholder="Enter full name" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickup-location">Pickup Location</label>
+                        <input type="text" id="pickup-location" placeholder="Street, City" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="drop-location">Destination</label>
+                        <input type="text" id="drop-location" placeholder="Street, City" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="vehicle-type">Vehicle Preference</label>
+                    <select id="vehicle-type" required>
+                        <option value="" disabled selected>Select a vehicle...</option>
+                        <option value="Economy">Economy (Affordable)</option>
+                        <option value="Luxury Sedan">Luxury Sedan (Premium)</option>
+                        <option value="SUV">SUV (Spacious)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Confirm Booking</button>
+            </form>
+        </section>
+
+        <section class="ride-list-section">
+            <h2 class="section-title">Active Bookings</h2>
+            <div id="rides-container" class="rides-grid" aria-live="polite" aria-label="Active bookings list">
+                </div>
+        </section>
+    </main>
+
+        <script type="module">
+            // Try to load built bundle first, fallback to source module during development
+            import('./dist/app.js').catch(() => import('./js/app.js'));
+
+            // Register service worker if available
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('/sw.js')
+                    .then(() => console.log('Service Worker registered'))
+                    .catch(() => console.log('Service Worker registration failed'));
+            }
+        </script>
+</body>
+</html>
