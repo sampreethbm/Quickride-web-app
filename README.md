@@ -90,7 +90,5 @@ QuickRide is a production-ready, minimalist ride booking application built with 
 - `/assets`: UI icons and branding.
 
 ## 🚀 Live Demo
-[Insert your GitHub Pages link here!]
+https://sampreethbm.github.io/Quickride-web-app/
 
----
-*Developed as a professional-grade web application project.*
