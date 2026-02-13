@@ -15,6 +15,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      - name: Debug: environment
+        run: |
+          echo "--- ENV ---"
+          node -v
+          npm -v
+          echo "--- LIST ROOT ---"
+          pwd
+          ls -la
+          echo "--- LIST WORKSPACE ---"
+          ls -la ${{ github.workspace }} || true
+          echo "--- package.json ---"
+          sed -n '1,200p' package.json || true
+          echo "--- package-lock.json head ---"
+          head -n 120 package-lock.json || true
       - name: Install dependencies
         run: npm ci
       - name: Run linter
