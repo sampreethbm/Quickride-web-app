@@ -30,7 +30,7 @@ jobs:
           echo "--- package-lock.json head ---"
           head -n 120 package-lock.json || true
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Run linter
         run: npm run lint
       - name: Build bundle
