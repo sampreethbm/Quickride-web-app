@@ -13,8 +13,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      - name: Debug: environment
+        run: |
+          echo "node: $(node -v)"
+          echo "npm: $(npm -v)"
+          echo "pwd: $(pwd)"
+          ls -la
+          echo "package.json:" && sed -n '1,120p' package.json || true
+          echo "package-lock.json head:" && head -n 60 package-lock.json || true
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Build site
         run: npm run build
       - name: Deploy to GitHub Pages
