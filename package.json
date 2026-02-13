@@ -9,8 +9,8 @@
     "lint": "eslint . --ext .js,.html",
     "format": "prettier --write .",
     "start": "npx serve -s .",
-    "optimize-images": "npx imagemin \"images/*.{png,jpg,jpeg,svg}\" --out-dir=dist/images --plugin=svgo --plugin=pngquant --plugin=mozjpeg",
-    "optimize-images:watch": "npx chokidar \"images/*\" -c \"npm run optimize-images\"",
+    "optimize-images": "echo \"Install imagemin-cli and plugins to enable image optimization.\"",
+    "optimize-images:watch": "echo \"Install chokidar-cli to enable watch mode.\"",
     "test": "vitest"
   },
   "devDependencies": {
@@ -18,11 +18,6 @@
     "eslint": "^8.50.0",
     "prettier": "^2.8.8",
     "serve": "^14.2.0",
-    "imagemin-cli": "^7.0.1",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-pngquant": "^9.0.0",
-    "imagemin-svgo": "^10.0.1",
-    "chokidar-cli": "^3.0.0",
     "vitest": "^1.0.0"
   }
 }
