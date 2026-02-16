@@ -37,7 +37,7 @@ This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC 
     - **Recommended**: Use **VS Code Live Server** extension for the best experience (to support ES6 Modules).
     - Or simply open the file in Chrome/Edge/Firefox.
 
-## 🛠️ Usage
+##  Usage
 
 1.  **Book a Ride**: Fill in the form. Watch the fare estimate update instantly when you change vehicle types.
 2.  **Observe**:
