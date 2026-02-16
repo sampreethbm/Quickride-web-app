@@ -3,75 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="QuickRide — simple, professional ride booking and management.">
-    <meta name="theme-color" content="#2563eb">
-    <title>QuickRide | Professional Booking</title>
-    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="QuickRide - Minimalist Ride Booking Application">
+    <title>QuickRide | Book Your Journey</title>
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="preload" href="css/main.css" as="style">
-    <link rel="stylesheet" href="css/variable.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="navbar">
-        <div class="container header-content" role="navigation" aria-label="Main navigation">
-            <h1 class="logo">Quick<span>Ride</span></h1>
-            <div id="ride-count" class="badge" aria-live="polite">0 Bookings</div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <header class="app-header">
+        <div class="container header-content">
+            <h1 class="logo">Quick<span class="highlight">Ride</span></h1>
+            <div class="header-actions">
+                <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme">
+                   <!-- Icon placeholder if needed, using CSS for now -->
+                   🌙
+                </button>
+            </div>
         </div>
     </header>
 
-    <main id="main-content" class="container" role="main">
-        <section class="card shadow-sm">
-            <h2 class="section-title">Book a New Ride</h2>
-            <form id="ride-form" aria-label="Book a ride">
-                <div class="form-group">
-                    <label for="passenger-name">Passenger Name</label>
-                    <input type="text" id="passenger-name" placeholder="Enter full name" required>
-                </div>
-                <div class="form-row">
+    <main class="container main-content-grid">
+        
+        <!-- Left Column: Booking Form -->
+        <section class="booking-section">
+            <div class="card form-card">
+                <h2 class="card-title">Book a Ride</h2>
+                <form id="booking-form" class="booking-form">
+                    
+                    <!-- Passenger Details -->
                     <div class="form-group">
-                        <label for="pickup-location">Pickup Location</label>
-                        <input type="text" id="pickup-location" placeholder="Street, City" required>
+                        <label for="passengerName">Passenger Name</label>
+                        <input type="text" id="passengerName" name="passengerName" placeholder="e.g. John Doe" required autocomplete="name">
                     </div>
+
+                    <!-- Journey Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickupLocation">Pickup Location</label>
+                            <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dropoffLocation">Destination</label>
+                            <input type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Enter destination" required>
+                        </div>
+                    </div>
+
+                    <!-- Ride Type -->
                     <div class="form-group">
-                        <label for="drop-location">Destination</label>
-                        <input type="text" id="drop-location" placeholder="Street, City" required>
+                        <label for="rideType">Vehicle Type</label>
+                        <select id="rideType" name="rideType" required>
+                            <option value="" disabled selected>Select vehicle class</option>
+                            <option value="standard">Standard (4 seats)</option>
+                            <option value="premium">Premium (Luxury)</option>
+                            <option value="suv">SUV (6 seats)</option>
+                        </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="vehicle-type">Vehicle Preference</label>
-                    <select id="vehicle-type" required>
-                        <option value="" disabled selected>Select a vehicle...</option>
-                        <option value="Economy">Economy (Affordable)</option>
-                        <option value="Luxury Sedan">Luxury Sedan (Premium)</option>
-                        <option value="SUV">SUV (Spacious)</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary">Confirm Booking</button>
-            </form>
+
+                    <!-- Action -->
+                    <button type="submit" class="btn btn-primary btn-block" id="bookBtn">
+                        <span class="btn-text">Confirm Booking</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                    
+                    <!-- Fare Estimate (Hidden initially) -->
+                    <div id="fare-estimate" class="fade-in hidden">
+                        Estimated Fare: <span id="fare-amount">$0.00</span>
+                    </div>
+
+                </form>
+            </div>
         </section>
 
-        <section class="ride-list-section">
-            <h2 class="section-title">Active Bookings</h2>
-            <div id="rides-container" class="rides-grid" aria-live="polite" aria-label="Active bookings list">
-                </div>
+        <!-- Right Column: Active Bookings -->
+        <section class="rides-section">
+            <div class="section-header">
+                <h2>Active Bookings</h2>
+                <span id="booking-count" class="badge">0</span>
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state">
+                <div class="empty-icon">🚖</div>
+                <h3>No Active Rides</h3>
+                <p>Book your first ride to verify the system works.</p>
+            </div>
+
+            <!-- Bookings List -->
+            <ul id="bookings-list" class="bookings-list">
+                <!-- Javascript will populate this -->
+            </ul>
         </section>
+
     </main>
 
-        <script type="module">
-            // Try to load built bundle first, fallback to source module during development
-            import('./dist/app.js').catch(() => import('./js/app.js'));
+    <!-- Modular Script -->
+    <script type="module" src="js/app.js"></script>
 
-            // Register service worker if available
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                    .register('/sw.js')
-                    .then(() => console.log('Service Worker registered'))
-                    .catch(() => console.log('Service Worker registration failed'));
-            }
-        </script>
 </body>
 </html>

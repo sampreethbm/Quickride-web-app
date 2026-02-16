@@ -1,96 +1,62 @@
-# QuickRide — Web Demo
+# 🚖 QuickRide
 
-Small, professional-feeling ride booking demo.
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status: Active](https://img.shields.io/badge/Status-Active%20Development-success)
+![Tech: Vanilla JS](https://img.shields.io/badge/Tech-Vanilla%20JS%20(ES6+)-f7df1e)
 
-Getting started
+**QuickRide** is a minimalist, professional ride-booking application built with pure **HTML5, CSS3, and Modern JavaScript**. 
 
-1. Install dependencies
-
-```powershell
-npm install
-```
-
-2. Run development watcher (esbuild)
-
-```powershell
-npm run dev
-```
-
-3. Build production bundle
-
-```powershell
-npm run build
-# Serve locally (optional)
-npx serve .
-```
-
-Notes
-
-- The app uses `esbuild` to bundle `js/app.js` into `dist/app.js` for production. `index.html` attempts to load `dist/app.js` first and falls back to `js/app.js` if the bundle isn't present.
-- Use `npm run lint` and `npm run format` to run ESLint and Prettier.
-
-Service Worker
-
-- The app includes a simple service worker (`sw.js`) that precaches core assets and provides a basic offline fallback. The service worker registers automatically when served from a secure context (HTTPS or localhost).
-
-Image optimization
-
-- Optimize source images (put images in `images/`) with:
-
-```powershell
-npm run optimize-images
-```
-
-Image optimization demo
-
-- A small demo page compares originals in `images/` with optimized outputs in `dist/images/` (after running the optimizer):
-
-	- Open `images/demo.html` in a browser to view originals side-by-side with `dist/images` counterparts (build/optimize first).
-
-Automatic SVG optimization (watch)
-
-- To automatically optimize SVG/PNG/JPEG files when you add or change them in `images/`, run the watcher:
-
-```powershell
-npm run optimize-images:watch
-```
-
-This uses `chokidar-cli` to watch the `images/` folder and runs the same optimizer that writes results to `dist/images/`.
-
-
-Testing
-
-- Run unit tests with:
-
-```powershell
-npm run test
-```
-
-Deployment
-
-- CI builds and deploys `dist/` to GitHub Pages via `.github/workflows/deploy-pages.yml` on push to `main`.
-# 🚗 QuickRide – Ride Booking Web App
-
-QuickRide is a production-ready, minimalist ride booking application built with **Vanilla JavaScript**. It allows users to book, view, and manage ride requests in real-time with persistent storage.
+This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC Architecture) implementation **without frameworks**, serving as a solid foundation before transitioning to React.
 
 ## ✨ Features
-- **Real-time CRUD:** Create, Read, and Delete bookings instantly.
-- **Persistence:** Data is stored in the browser's LocalStorage.
-- **Responsive UI:** Fully optimized for mobile, tablet, and desktop.
-- **Modular Architecture:** Clean separation of concerns (Storage, UI, Logic).
 
-## 🛠️ Tech Stack
-- **HTML5** & **CSS3** (Flexbox/Grid)
-- **Vanilla JavaScript** (ES6+ Modules)
-- **LocalStorage API**
+- **Component-Driven UI**: Modular rendering of booking lists similar to React components.
+- **MVC Architecture**: Strict separation of concerns:
+  - **`storage.js`**: Data Layer (LocalStorage CRUD).
+  - **`ui.js`**: Presentation Layer (DOM manipulation, Toasts).
+  - **`app.js`**: Controller (Logic, Events, Data Wiring).
+- **Real-Time Simulation**:
+  - **Fare Estimation**: Calculates price based on vehicle type and randomized distance.
+  - **Status Updates**: Simulates "Driver Search" with async promises (Pending ➝ Driver Assigned).
+- **Modern Styling**: Dark Mode support, CSS Variables, and responsive Grid layouts.
+- **Zero Dependencies**: No libraries/frameworks. Just pure code.
 
-## 📂 Structure
-- `/js`: Modular logic files.
-- `/css`: Scoped styling with CSS variables.
-- `/assets`: UI icons and branding.
+## 📂 Project Structure
 
-## 🚀 Live Demo
-[Insert your GitHub Pages link here!]
+```text
+/
+├── index.html          # Semantic HTML5 entry point
+├── css/
+│   └── style.css       # Modern CSS with Variables & Flexbox/Grid
+└── js/
+    ├── app.js          # Controller: Entry point & Event Listeners
+    ├── ui.js           # View: UI Rendering & Notification Logic
+    └── storage.js      # Model: LocalStorage Data Management
+```
+
+## 🚀 Getting Started
+
+1.  **Clone the repository**
+2.  **Open `index.html`**
+    - **Recommended**: Use **VS Code Live Server** extension for the best experience (to support ES6 Modules).
+    - Or simply open the file in Chrome/Edge/Firefox.
+
+## 🛠️ Usage
+
+1.  **Book a Ride**: Fill in the form. Watch the fare estimate update instantly when you change vehicle types.
+2.  **Observe**:
+    - The "Confirm Booking" button shows a loading state.
+    - A Toast notification appears upon success.
+    - The booking is added to the "Active Bookings" list with status **"Pending"**.
+3.  **Wait**: After 5 seconds, the system simulates finding a driver, and the status updates to **"Driver Assigned"**.
+4.  **Persist**: Refresh the page. Your bookings remain saved in LocalStorage.
+
+## 🔮 Future Scope
+
+This project is prepared for migration to a modern stack:
+- **Phase 1**: Migration to **React** (Components ➝ React Components).
+- **Phase 2**: Backend integration with **Node.js/Express** (replacing `storage.js`).
+- **Phase 3**: Real-time updates using **Socket.io**.
 
 ---
-*Developed as a professional-grade web application project.*
+*Built with ❤️ by [Your Name]*
