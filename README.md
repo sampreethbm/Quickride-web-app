@@ -53,3 +53,8 @@ This project is prepared for migration to a modern stack:
 - **Phase 1**: Migration to **React** (Components ➝ React Components).
 - **Phase 2**: Backend integration with **Node.js/Express** (replacing `storage.js`).
 - **Phase 3**: Real-time updates using **Socket.io**.
+
+## Live demo 
+https://sampreethbm.github.io/Quickride-web-app/
+
+  
