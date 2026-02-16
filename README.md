@@ -1,14 +1,10 @@
-# 🚖 QuickRide
-
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Status: Active](https://img.shields.io/badge/Status-Active%20Development-success)
-![Tech: Vanilla JS](https://img.shields.io/badge/Tech-Vanilla%20JS%20(ES6+)-f7df1e)
+#  QuickRide
 
 **QuickRide** is a minimalist, professional ride-booking application built with pure **HTML5, CSS3, and Modern JavaScript**. 
 
 This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC Architecture) implementation **without frameworks**, serving as a solid foundation before transitioning to React.
 
-## ✨ Features
+##  Features
 
 - **Component-Driven UI**: Modular rendering of booking lists similar to React components.
 - **MVC Architecture**: Strict separation of concerns:
@@ -21,7 +17,7 @@ This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC 
 - **Modern Styling**: Dark Mode support, CSS Variables, and responsive Grid layouts.
 - **Zero Dependencies**: No libraries/frameworks. Just pure code.
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 /
@@ -34,7 +30,7 @@ This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC 
     └── storage.js      # Model: LocalStorage Data Management
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  **Clone the repository**
 2.  **Open `index.html`**
@@ -51,12 +47,9 @@ This project demonstrates core Full-Stack concepts (CRUD, State Management, MVC 
 3.  **Wait**: After 5 seconds, the system simulates finding a driver, and the status updates to **"Driver Assigned"**.
 4.  **Persist**: Refresh the page. Your bookings remain saved in LocalStorage.
 
-## 🔮 Future Scope
+##  Future Scope
 
 This project is prepared for migration to a modern stack:
 - **Phase 1**: Migration to **React** (Components ➝ React Components).
 - **Phase 2**: Backend integration with **Node.js/Express** (replacing `storage.js`).
 - **Phase 3**: Real-time updates using **Socket.io**.
-
----
-*Built with ❤️ by [Your Name]*
